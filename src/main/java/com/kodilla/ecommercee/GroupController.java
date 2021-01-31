@@ -1,7 +1,6 @@
 package com.kodilla.ecommercee;
 
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,8 +15,8 @@ public class GroupController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "addGroup")
-    public void addGroup(@RequestBody GroupDto groupDto) {
-        System.out.println("Adding new group of products.");
+    public GroupDto groupDto(@RequestBody GroupDto groupDto) {
+        return new GroupDto(2L, "Test group", "Description of added test group")
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "getGroupWithId")
