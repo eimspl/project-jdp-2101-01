@@ -16,7 +16,7 @@ public class GroupController {
 
     @RequestMapping(method = RequestMethod.POST, value = "addGroup")
     public GroupDto groupDto(@RequestBody GroupDto groupDto) {
-        return new GroupDto(2L, "Test group", "Description of added test group")
+        return new GroupDto(2L, "Test group", "Description of added test group");
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "getGroupWithId")
