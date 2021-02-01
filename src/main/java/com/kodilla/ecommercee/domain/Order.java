@@ -11,8 +11,23 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderId;
 
-    @Column(name = "order_status")
-    private String status;
+    private Integer user_id;
+
+    private Integer cart_id;
+
+    @Column(columnDefinition = "VARCHAR(20)")
+    private String orderStatus;
+
+    @Column(columnDefinition = "VARCHAR(15)")
+    private String paymentMethod;
+
+    private Double totalValue;
+
+    private java.sql.Date paymentDate;
+
+    private java.sql.Date realisationDate;
+
+    private boolean isPaid;
 }
 
 
