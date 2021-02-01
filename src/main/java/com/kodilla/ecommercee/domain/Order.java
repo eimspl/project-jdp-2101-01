@@ -1,32 +1,44 @@
 package com.kodilla.ecommercee.domain;
 
 import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Getter
-@Entity(name = "orders")
+@Setter
+@Entity
+@Table(name = "orders")
 public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderId;
 
-    private Integer user_id;
+//    @ManyToOne
+//    @JoinColumn(name = "user_id")
+//    private User user;
 
-    private Integer cart_id;
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "cart_id", referencedColumnName = "order_id")
+//    private Cart cart;
 
-    @Column(columnDefinition = "VARCHAR(20)")
+    @Column
     private String orderStatus;
 
-    @Column(columnDefinition = "VARCHAR(15)")
+    @Column
     private String paymentMethod;
 
+    @Column
     private Double totalValue;
 
-    private java.sql.Date paymentDate;
+    @Column
+    private java.sql.Timestamp paymentDate;
 
-    private java.sql.Date realisationDate;
+    @Column
+    private java.sql.Timestamp realisationDate;
 
+    @Column
     private boolean isPaid;
 }
 
