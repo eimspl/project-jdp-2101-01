@@ -42,7 +42,7 @@ public class User {
     @Column(name = "PHONE_NUMBER")
     private String phoneNumber;
 
-    /* @OneToMany(                       //potrzebuje encji order - chyba już jest.
+    /* @OneToMany(                       //potrzebuje encji order - chyba już jest...
             targetEntity = Order.class,
             mappedBy = "user",
             cascade = CascadeType.REMOVE,
