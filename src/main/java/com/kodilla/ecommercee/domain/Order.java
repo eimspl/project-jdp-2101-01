@@ -1,15 +1,17 @@
 package com.kodilla.ecommercee.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "orders")
-public class Order {
+public class Order{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,5 +43,4 @@ public class Order {
     @Column
     private boolean isPaid;
 }
-
 
