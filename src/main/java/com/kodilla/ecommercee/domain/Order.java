@@ -15,9 +15,9 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderId;
 
-//    @ManyToOne
-//    @JoinColumn(name = "user_id")
-//    private User user;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
 //    @OneToOne(cascade = CascadeType.ALL)
 //    @JoinColumn(name = "cart_id", referencedColumnName = "order_id")
