@@ -10,18 +10,18 @@ import java.util.Random;
 @CrossOrigin("*")
 public class UserController {
 
-    @RequestMapping(method = RequestMethod.GET, value = "createNewUser")
-    public UserDto createUser() {
+    @RequestMapping(method = RequestMethod.POST, value = "createNewUser")
+    public UserDto createUser(@RequestBody String userName, String userSurname, String userEMail) {
         return new UserDto("Adam","Kowalski","adam.kowalski@wp.pl");
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "banUser")
-    public UserDto banUser(@RequestParam Long userId) {
+    public UserDto banUser(@RequestBody Long userId) {
         return new UserDto("bannedUserName","bannedUserSurname","bannedUserMail");
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "getKey")
-    public Integer getKey(@RequestParam Long userId) {
+    public Integer getKey(@RequestBody Long userId) {
         Random random = new Random();
         int a = random.nextInt(101);
         return a+999;
