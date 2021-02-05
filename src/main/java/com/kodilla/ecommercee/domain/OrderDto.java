@@ -7,14 +7,6 @@ import lombok.*;
 public class OrderDto {
     private Long orderId;
 
-//    @ManyToOne
-//    @JoinColumn(name = "user_id")
-//    private User user;
-
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "cart_id", referencedColumnName = "order_id")
-//    private Cart cart;
-
     private String orderStatus;
 
     private String paymentMethod;

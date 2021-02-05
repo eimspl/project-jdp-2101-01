@@ -1,17 +1,13 @@
 package com.kodilla.ecommercee.controller;
 
-import com.kodilla.ecommercee.UserController;
 import com.kodilla.ecommercee.domain.Order;
 import com.kodilla.ecommercee.domain.OrderDto;
 import com.kodilla.ecommercee.mapper.OrderMapper;
 import com.kodilla.ecommercee.service.Database;
-import org.graalvm.compiler.core.common.type.ArithmeticOpTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,17 +24,10 @@ public class OrderController {
         this.orderMapper = orderMapper;
     }
 
-
     @GetMapping("/showAllOrders")
     public List<OrderDto> showAllOrders() {
         List<Order> orders = database.getAllOrders();
         return orderMapper.mapToOrderDtoList(orders);
-    }
-
-    @PostMapping(value = "/addNewOrder", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Order addNewOrder(@RequestBody OrderDto orderDto) {
-        Order order = orderMapper.mapToOrder(orderDto);
-        return database.addOrder(order);
     }
 
     @GetMapping("/showOrder/{orderId}")
