@@ -17,10 +17,6 @@ public class Database {
     @Autowired
     private final OrderRepository repository;
 
-    public Order addOrder(final Order order){
-        return repository.save(order);
-    }
-
     public List<Order> getAllOrders() {
         return repository.findAll();
     }
