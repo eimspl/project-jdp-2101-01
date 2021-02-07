@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
-public class Database {
+public class OrderDatabase {
 
     @Autowired
     private final OrderRepository repository;
