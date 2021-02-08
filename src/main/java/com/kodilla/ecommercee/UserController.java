@@ -10,8 +10,8 @@ import java.util.Random;
 @CrossOrigin("*")
 public class UserController {
 
-    @RequestMapping(method = RequestMethod.GET, value = "createNewUser")
-    public UserDto createUser() {
+    @RequestMapping(method = RequestMethod.POST, value = "createNewUser")
+    public UserDto createUser(@RequestBody UserDto userDto) {
         return new UserDto("Adam","Kowalski","adam.kowalski@wp.pl");
     }
 
