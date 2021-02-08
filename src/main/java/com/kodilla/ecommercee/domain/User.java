@@ -18,6 +18,7 @@ import java.util.List;
 @Table(name = "USERS")
 public class User {
 
+    @NotNull
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
