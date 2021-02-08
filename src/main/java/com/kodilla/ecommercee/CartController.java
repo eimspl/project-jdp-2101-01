@@ -3,7 +3,10 @@ package com.kodilla.ecommercee;
 import com.kodilla.ecommercee.domain.CartDto;
 import com.kodilla.ecommercee.domain.OrderDto;
 import com.kodilla.ecommercee.domain.ProductDto;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+
+import java.sql.Timestamp;
 
 @RestController
 @RequestMapping("/v1/Cart")
@@ -30,8 +33,8 @@ public class CartController {
         return new ProductDto(3L,"Deleted product","Deleted description",100.100,10L);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "createOrder")
-    public OrderDto createOrder() {
-        return new OrderDto(1L,"New order");
+    @PostMapping(value = "createOrder", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public OrderDto createOrder(@RequestBody OrderDto orderDto) {
+        return new OrderDto(1L,"New order", "card", 2.0, new Timestamp(20200525123420L), new Timestamp(20200423142304L), true);
     }
 }
