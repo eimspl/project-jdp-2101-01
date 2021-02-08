@@ -1,23 +1,21 @@
 package com.kodilla.ecommercee.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "orders")
-public class Order {
+public class Order{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderId;
-
-//    @ManyToOne
-//    @JoinColumn(name = "user_id")
-//    private User user;
 
 //    @OneToOne(cascade = CascadeType.ALL)
 //    @JoinColumn(name = "cart_id", referencedColumnName = "order_id")
@@ -41,5 +39,4 @@ public class Order {
     @Column
     private boolean isPaid;
 }
-
 
