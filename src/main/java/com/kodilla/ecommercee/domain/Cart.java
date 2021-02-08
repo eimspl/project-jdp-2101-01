@@ -4,88 +4,45 @@ package com.kodilla.ecommercee.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name= "CARTS")
 public class Cart {
 
-    private Long id;
-    private Date dateOfReservation;
-    private Date termOfEndReservation;
-    private Boolean isOrdered;
-    private User user;
-    //private List<Product> listOfProducts;
-
-
     @Id
     @GeneratedValue
-    @NonNull
+    @NotNull
     @Column(name = "CART_ID",unique = true)
-    public Long getId() {
-        return id;
-    }
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name="USER")
-    public User getUser() {
-        return user;
-    }
+    private User user;
 
-    @Column
-    public Date getDateOfReservation() {
-        return dateOfReservation;
-    }
+    @Column(name = "DATE_OF_RESERVATION")
+    private Date dateOfReservation;
 
-    @Column
-    public Date getTermOfEndReservation() {
-        return termOfEndReservation;
-    }
+    @Column(name = "TERM_OF_END_RESERVATION")
+    private Date termOfEndReservation;
 
-    @Column
-    public Boolean getIsOrdered() {
-        return isOrdered;
-    }
+    @Column(name = "IS_ORDERED")
+    private Boolean isOrdered;
 
     /*
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "Product_Carts",
             joinColumns = {@JoinColumn(name = "CART_ID",referencedColumnName = "CART_ID")},
-            inverseJoinColumns = {@JoinColumn(name = "")} //tutaj czekam na encję product
+            inverseJoinColumns = {@JoinColumn(name = "PRODUCT_ID",referencedColumnName = "PRODUCT_ID")} //tutaj czekam na encję product
 
     )
-    public List<Product> getListOfProducts() {
-        return listOfProducts;
-     }
+    //private List<Product> listOfProducts;
      */
 
-
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setDateOfReservation(Date dateOfReservation) {
-        this.dateOfReservation = dateOfReservation;
-    }
-
-    public void setTermOfEndReservation(Date termOfEndReservation) {
-        this.termOfEndReservation = termOfEndReservation;
-    }
-
-    public void setIsOrdered(Boolean ordered) {
-        isOrdered = ordered;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-
-    /* public void setListOfProducts(List<Product> listOfProducts) {
-        this.listOfProducts = listOfProducts;
-    } */
 }
