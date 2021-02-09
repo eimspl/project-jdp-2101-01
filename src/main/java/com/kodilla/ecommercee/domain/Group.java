@@ -15,7 +15,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "GROUPS")
+@Table(name = "GRUPY")
 public class Group {
 
     @Id
@@ -30,12 +30,11 @@ public class Group {
     @Column(name = "DESCRIPTION")
     private String description;
 
-    /*    //do zaimplementowania po dodaniu przez inną osobę klasy Product do maina
     @OneToMany(
             targetEntity = Product.class,
-            mappedBy = " ",
-            cascade = CasadeType.REMOVE,
+            mappedBy = "groups",
+            cascade = CascadeType.REMOVE,
             fetch = FetchType.LAZY)
     private List<Product> products = new ArrayList();
-     */
+
 }
