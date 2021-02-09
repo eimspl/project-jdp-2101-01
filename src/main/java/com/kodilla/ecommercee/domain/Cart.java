@@ -6,6 +6,7 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -34,7 +35,7 @@ public class Cart {
     @Column(name = "IS_ORDERED")
     private Boolean isOrdered;
 
-    /*
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "Product_Carts",
@@ -42,7 +43,7 @@ public class Cart {
             inverseJoinColumns = {@JoinColumn(name = "PRODUCT_ID",referencedColumnName = "PRODUCT_ID")} //tutaj czekam na encję product
 
     )
-    //private List<Product> listOfProducts;
-     */
+    private List<Product> listOfProducts;
+
 
 }
