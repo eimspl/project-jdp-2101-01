@@ -9,7 +9,6 @@ buildscript {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
 }
-
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
@@ -23,7 +22,6 @@ repositories {
     mavenCentral()
 }
 
-
 dependencies {
     implementation('org.springframework.boot:spring-boot-starter-data-jpa')
     implementation('org.springframework.boot:spring-boot-starter-web')
@@ -34,4 +32,10 @@ dependencies {
     runtimeOnly'mysql:mysql-connector-java'
     testCompileOnly 'org.projectlombok:lombok:1.18.16'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.16'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.2'              //JDP210101-19
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.6.2'           //JDP210101-19
+
+}
+test {                                                                          //JDP210101-19
+    useJUnitPlatform()
 }
