@@ -45,12 +45,12 @@ public class User {
     @Column(name = "PHONE_NUMBER")
     private String phoneNumber;
 
-    /* @OneToMany(                       //encja koszyk zostanie przygotowana przez kolegę - Krzyśka, wtedy złączymy.
-            targetEntity = Carts.class,
+    @OneToMany(
+            targetEntity = Cart.class,
             mappedBy = "user",
             cascade = CascadeType.REMOVE,
             fetch = FetchType.LAZY)
-    private List<Cart> carts = new ArrayList<>(); */
+    private List<Cart> carts = new ArrayList<>();
 
     public User(String userName, String password, String emailAddress) {
         this.userName = userName;
