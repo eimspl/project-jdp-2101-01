@@ -20,7 +20,7 @@ public class Cart {
     @Id
     @GeneratedValue
     @NotNull
-    @Column(name = "cart_id", unique = true)
+    @Column
     private Long cartId;
 
     @OneToOne
@@ -42,22 +42,7 @@ public class Cart {
     @Column(name = "IS_ORDERED")
     private Boolean isOrdered;
 
-
-//    @ManyToMany(cascade = CascadeType.ALL)
-//    @JoinTable(
-//            name = "Product_Carts",
-//            joinColumns = {@JoinColumn(name = "cart_id")},
-//            inverseJoinColumns = {@JoinColumn(name = "PRODUCT_ID")}
-//
-//    )
-//    private Set<Cart> listOfProducts;
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "Product_Carts",
-            joinColumns = {@JoinColumn(name = "CART_ID",referencedColumnName = "CART_ID")},
-            inverseJoinColumns = {@JoinColumn(name = "PRODUCT_ID",referencedColumnName = "PRODUCT_ID")} //tutaj czekam na encję product
-
-    )
-    private List<Product> listOfProducts;
-
+    @ManyToMany
+    @JoinTable
+    private Set<Cart> listOfProducts;
 }

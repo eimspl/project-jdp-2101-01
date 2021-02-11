@@ -37,10 +37,6 @@ public class Product {
     @JoinColumn(name = "GRUPY_ID")
     private Group groups;
 
-//    @ManyToMany(mappedBy = "listOfProducts")
-//    private Set<Product> products;
-
-    @ManyToMany(cascade = CascadeType.ALL)
-    private List<Cart> carts;
-
+    @ManyToMany
+    private Set<Product> products;
 }
