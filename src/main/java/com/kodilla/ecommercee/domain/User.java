@@ -50,6 +50,7 @@ public class User {
             mappedBy = "user",
             cascade = CascadeType.REMOVE,
             fetch = FetchType.LAZY)
+
     private List<Cart> carts = new ArrayList<>();
 
     public User(String userName, String password, String emailAddress) {
