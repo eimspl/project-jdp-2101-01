@@ -7,23 +7,30 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name= "CARTS")
+@Table(name = "carts")
 public class Cart {
 
     @Id
     @GeneratedValue
     @NotNull
-    @Column(name = "CART_ID",unique = true)
-    private Long id;
+    @Column(name = "cart_id", unique = true)
+    private Long cartId;
+
+    @OneToOne
+    @MapsId
+    @JoinColumn(name = "order_id")
+    private Order order;
+
 
     @ManyToOne
-    @JoinColumn(name="USER")
+    @JoinColumn(name = "USER")
     private User user;
 
     @Column(name = "DATE_OF_RESERVATION")
@@ -36,6 +43,14 @@ public class Cart {
     private Boolean isOrdered;
 
 
+//    @ManyToMany(cascade = CascadeType.ALL)
+//    @JoinTable(
+//            name = "Product_Carts",
+//            joinColumns = {@JoinColumn(name = "cart_id")},
+//            inverseJoinColumns = {@JoinColumn(name = "PRODUCT_ID")}
+//
+//    )
+//    private Set<Cart> listOfProducts;
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "Product_Carts",
@@ -44,6 +59,5 @@ public class Cart {
 
     )
     private List<Product> listOfProducts;
-
 
 }
