@@ -31,9 +31,9 @@ public class OrderController {
     }
 
     @GetMapping("/showOrder/{orderId}")
-    public Order showOrder(@PathVariable("orderId") Long orderId) throws  OrderNotFoundException {
+    public Order showOrder(@PathVariable("orderId") Long orderId) throws NotFoundException {
         Optional<Order> order = orderDatabase.getOrder(orderId);
-        return order.orElseThrow(OrderNotFoundException::new);
+        return order.orElseThrow(NotFoundException::new);
     }
 
     @PutMapping(value = "/updateOrder/{orderId}", consumes = MediaType.APPLICATION_JSON_VALUE)

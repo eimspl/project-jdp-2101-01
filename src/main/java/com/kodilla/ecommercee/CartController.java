@@ -1,12 +1,11 @@
 package com.kodilla.ecommercee;
 
-import com.kodilla.ecommercee.domain.CartDto;
-import com.kodilla.ecommercee.domain.OrderDto;
-import com.kodilla.ecommercee.domain.ProductDto;
+import com.kodilla.ecommercee.domain.*;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/v1/Cart")
@@ -20,17 +19,17 @@ public class CartController {
 
     @RequestMapping(method = RequestMethod.GET, value = "getProducts")
     public ProductDto getProducts(@RequestParam Long cartId) {
-        return new ProductDto(1L,"New Product","New description",20.20, "szt.", 5L);
+        return new ProductDto(1L,"New Product","New description",20.20, "szt.", new Group(), new ArrayList<Cart>());
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "addProducts")
     public ProductDto addProduct(@RequestParam Long cartId) {
-        return new ProductDto(2L,"Added Product","Added description",60.60, "szt.", 6L);
+        return new ProductDto(2L,"Added Product","Added description",60.60, "szt.", new Group(), new ArrayList<Cart>());
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "deleteProduct")
     public ProductDto deleteProduct(@RequestParam Long cartId) {
-        return new ProductDto(3L,"Deleted product","Deleted description",100.100, "szt.", 10L);
+        return new ProductDto(3L,"Deleted product","Deleted description",100.100, "szt.", new Group(), new ArrayList<Cart>());
     }
 
     @PostMapping(value = "createOrder", consumes = MediaType.APPLICATION_JSON_VALUE)
