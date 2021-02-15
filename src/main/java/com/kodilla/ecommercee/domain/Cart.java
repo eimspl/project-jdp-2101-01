@@ -20,9 +20,9 @@ public class Cart {
     @Column(name = "CART_ID",unique = true)
     private Long id;
 
-   // @ManyToOne
-   // @JoinColumn(name="USER")
-   // private User user;
+    @ManyToOne
+    @JoinColumn(name="USER")
+    private User user;
 
     @Column(name = "DATE_OF_RESERVATION")
     private Date dateOfReservation;

@@ -1,5 +1,6 @@
 package com.kodilla.ecommercee.TestDAO;
 import com.kodilla.ecommercee.domain.Cart;
+import com.kodilla.ecommercee.domain.Product;
 import com.kodilla.ecommercee.domain.User;
 import com.kodilla.ecommercee.repository.CartRepository;
 import org.junit.Test;
@@ -9,6 +10,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.Assert.*;
@@ -21,8 +24,14 @@ public class CartTestSuite {
     @Test
     public void TestCartDaoSave(){
         //Give
+        List<Product> list = new ArrayList();
+        Product product = new Product();
+        product.setDescription("test");
+        product.setProductId(1L);
+        product.setName("Test");
+        list.add(product);
         User user1 = new User("Marcin","Alamakota","Marcin11@gmail.com");
-        Cart cart = new Cart(1000L, new Timestamp(12345678900L), new Timestamp(12345900000L) ,false );
+        Cart cart = new Cart(1000L, user1, new Timestamp(12345678900L), new Timestamp(12345900000L), false,list);
         System.out.println("ID= "+cart.getId()+" DateOfReservation= "+cart.getDateOfReservation()+" DateOfEnd= "
                 +cart.getTermOfEndReservation()+" Ordered= "+cart.getIsOrdered());
         //When
@@ -31,7 +40,7 @@ public class CartTestSuite {
                 +cartS.getTermOfEndReservation()+" Ordered= "+cartS.getIsOrdered());
         //Then
         Optional<Cart> readCart = cartRepository.findById(1000L);
-        assertTrue(readCart.isPresent());
+        assertTrue(readCart.isPresent()); // NIE PRZECHODZI TEST OBECNOSCI REKORDU W BAZIE DANYCH
         //CleanUp
         try {
             cartRepository.deleteById(1000L);
@@ -42,8 +51,14 @@ public class CartTestSuite {
     @Test
     public void TestCartDaoCreate(){
         //Give
+        List<Product> list = new ArrayList();
+        Product product = new Product();
+        product.setDescription("test");
+        product.setProductId(1L);
+        product.setName("Test");
+        list.add(product);
         User user1 = new User("Marcin","Alamakota","Marcin11@gmail.com");
-        Cart cart = new Cart(2000L, new Timestamp(12345678900L), new Timestamp(12345900000L) ,true );
+        Cart cart = new Cart(2000L, user1, new Timestamp(12345678900L), new Timestamp(12345900000L) ,true, list );
         System.out.println("ID= "+ cart.getId()+" DateOfRezervation= "+cart.getDateOfReservation()+" DateOfEnd= "
                 +cart.getTermOfEndReservation()+" Ordered= "+cart.getIsOrdered());
         //When
@@ -65,8 +80,14 @@ public class CartTestSuite {
     @Test
     public void TestCartDaoModification(){
         //Give
+        List<Product> list = new ArrayList();
+        Product product = new Product();
+        product.setDescription("test");
+        product.setProductId(1L);
+        product.setName("Test");
+        list.add(product);
         User user1 = new User("Marcin","Alamakota","Marcin11@gmail.com");
-        Cart cart1 = new Cart(3000L, new Timestamp(12345678900L), new Timestamp(12345900000L) ,false );
+        Cart cart1 = new Cart(3000L, user1, new Timestamp(12345678900L), new Timestamp(12345900000L) ,false, list );
         System.out.println("ID= "+ cart1.getId()+" DateOfRezervation= "+cart1.getDateOfReservation()+" DateOfEnd= "
                 +cart1.getTermOfEndReservation()+" Ordered= "+cart1.getIsOrdered());
         //When
@@ -76,7 +97,7 @@ public class CartTestSuite {
         //Then
         Optional<Cart> readCart1 = cartRepository.findById(3000L);
         assertTrue(readCart1.isPresent());
-        Cart cart2 = new Cart(3000L, new Timestamp(15345678900L), new Timestamp(15345900000L) ,true );
+        Cart cart2 = new Cart(3000L,user1, new Timestamp(15345678900L), new Timestamp(15345900000L) ,true, list );
         cartRepository.save(cart2);
         Optional<Cart> readCart2 = cartRepository.findById(3000L);
         assertEquals( new Timestamp(15345678900L), readCart2.map(Cart::getDateOfReservation).orElse(new Date(1L)));
@@ -92,8 +113,14 @@ public class CartTestSuite {
     @Test
     public void TestCartDaoDelete() {
         //Give
+        List<Product> list = new ArrayList();
+        Product product = new Product();
+        product.setDescription("test");
+        product.setProductId(1L);
+        product.setName("Test");
+        list.add(product);
         User user1 = new User("Marcin","Alamakota","Marcin11@gmail.com");
-        Cart cart1 = new Cart(4000L, new Timestamp(12345678900L), new Timestamp(12345900000L) ,false );
+        Cart cart1 = new Cart(4000L, user1, new Timestamp(12345678900L), new Timestamp(12345900000L) ,false, list );
         //When
         cartRepository.save(cart1);
         Optional<Cart> readCart1 = cartRepository.findById(4000L);
