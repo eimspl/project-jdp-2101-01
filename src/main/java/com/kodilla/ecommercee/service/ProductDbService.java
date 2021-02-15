@@ -1,11 +1,15 @@
 package com.kodilla.ecommercee.service;
 
+import com.kodilla.ecommercee.domain.Cart;
+import com.kodilla.ecommercee.domain.Group;
 import com.kodilla.ecommercee.domain.Product;
+import com.kodilla.ecommercee.domain.ProductDto;
 import com.kodilla.ecommercee.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,7 +29,7 @@ public class ProductDbService {
     }
 
     public void addProduct(){
-        repository.save(new Product());
+        repository.save(new Product(8L,"Product","Description",99.56, "szt.", new Group(4L, "Group", "Desc", new ArrayList<Product>()), new ArrayList<Cart>()));
     }
 
     public Product modifyProduct(final Product product){

@@ -30,9 +30,9 @@ public class ProductController {
     }
 
     @GetMapping("getProduct/{productId}")
-    public Product showProduct(@PathVariable Long productId) throws NotFoundException {
+    public Product showProduct(@PathVariable Long productId) throws Exception {
         Optional<Product> product = dbService.showProduct(productId);
-        return product.orElseThrow(NotFoundException::new);
+        return product.orElseThrow(Exception::new);
     }
 
     @PostMapping("addProduct")

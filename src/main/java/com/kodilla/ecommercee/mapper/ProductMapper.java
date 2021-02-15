@@ -17,7 +17,7 @@ public class ProductMapper {
             productDto.getPrice(),
             productDto.getUnit(),
             productDto.getGroupId(),
-            productDto.getCarts()
+            null
         );
     }
 
@@ -29,7 +29,7 @@ public class ProductMapper {
             product.getPrice(),
             product.getUnit(),
             product.getGroups(),
-            product.getCarts()
+            null
         );
     }
 
