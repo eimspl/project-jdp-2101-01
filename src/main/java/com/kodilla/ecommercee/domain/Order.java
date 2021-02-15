@@ -11,15 +11,16 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @Entity
 @Table(name = "orders")
-public class Order{
+public class Order {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="order_id")
     private Long orderId;
 
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "cart_id", referencedColumnName = "order_id")
-//    private Cart cart;
+    @OneToOne(mappedBy = "order" ,cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private Cart cart;
 
     @Column
     private String orderStatus;
