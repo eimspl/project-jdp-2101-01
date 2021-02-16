@@ -9,6 +9,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -50,5 +51,5 @@ public class User {
             mappedBy = "user",
             cascade = CascadeType.REMOVE,
             fetch = FetchType.LAZY)
-    private List<Cart> carts = new ArrayList<>();
+    private Set<Cart> carts;
 }
