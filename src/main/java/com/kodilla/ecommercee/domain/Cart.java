@@ -12,7 +12,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "carts")
+@Table(name = "CARTS")
 public class Cart {
 
     @Id
@@ -23,12 +23,11 @@ public class Cart {
 
     @OneToOne
     @MapsId
-    @JoinColumn(name = "order_id")
     private Order order;
 
 
     @ManyToOne
-    @JoinColumn(name = "USER")
+    @JoinColumn(name = "ID")
     private User user;
 
     @Column(name = "DATE_OF_RESERVATION")
@@ -42,5 +41,5 @@ public class Cart {
 
     @ManyToMany
     @JoinTable
-    private Set<Cart> listOfProducts;
+    private Set<Product> listOfProducts;        //MUSI BYC PRODUCT a nie CART
 }
