@@ -1,5 +1,6 @@
 package com.kodilla.ecommercee;
 
+import com.kodilla.ecommercee.domain.Cart;
 import com.kodilla.ecommercee.domain.CartDto;
 import com.kodilla.ecommercee.domain.OrderDto;
 import com.kodilla.ecommercee.domain.ProductDto;
@@ -12,6 +13,7 @@ import java.sql.Timestamp;
 @RequestMapping("/v1/Cart")
 @CrossOrigin("*")
 public class CartController {
+    private Cart cart;
 
     @RequestMapping(method = RequestMethod.GET, value = "getNewCart")
     public CartDto createNewCart(@RequestParam Long userId) {
@@ -35,6 +37,7 @@ public class CartController {
 
     @PostMapping(value = "createOrder", consumes = MediaType.APPLICATION_JSON_VALUE)
     public OrderDto createOrder(@RequestBody OrderDto orderDto) {
-        return new OrderDto(1L,"New order", "card", 2.0, new Timestamp(20200525123420L), new Timestamp(20200423142304L), true);
+
+        return new OrderDto(1L, cart,"New order", "card", 2.0, new Timestamp(20200525123420L), new Timestamp(20200423142304L), true);
     }
 }

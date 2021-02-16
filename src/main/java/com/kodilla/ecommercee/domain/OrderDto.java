@@ -7,6 +7,8 @@ import lombok.*;
 public class OrderDto {
     private Long orderId;
 
+    private Cart cart;
+
     private String orderStatus;
 
     private String paymentMethod;
