@@ -52,4 +52,10 @@ public class User {
             cascade = CascadeType.REMOVE,
             fetch = FetchType.LAZY)
     private Set<Cart> carts;
+
+    public User(String userName, String password, String emailAddress) {
+        this.userName = userName;
+        this.password = password;
+        this.emailAddress = emailAddress;
+    }
 }
