@@ -18,6 +18,14 @@ import java.util.List;
 @Table(name = "GRUPY")
 public class Group {
 
+    public Group(String name, String description, List<Product> products) {
+
+        this.name = name;
+        this.description = description;
+        this.products = products;
+
+    }
+
     @Id
     @GeneratedValue
     @NotNull
