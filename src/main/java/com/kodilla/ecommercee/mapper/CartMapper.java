@@ -3,6 +3,9 @@ package com.kodilla.ecommercee.mapper;
 import com.kodilla.ecommercee.domain.Cart;
 import com.kodilla.ecommercee.domain.CartDto;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 
 public class CartMapper {
     OrderMapper orderMapper;
@@ -29,5 +32,11 @@ public class CartMapper {
                 cart.getIsOrdered(),
                 cart.getListOfProducts()
         );
+    }
+
+    public List<CartDto> mapToCartDtoList(final List<Cart> cartList){
+        return cartList.stream()
+                .map(this::mapToCartDto)
+                .collect(Collectors.toList());
     }
 }
