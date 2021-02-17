@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class UserMapper {
-    private CartDto cartDto;
+    CartDto cartDto;
 
     public User mapToUser(final UserDto userDto){
         return new User(
