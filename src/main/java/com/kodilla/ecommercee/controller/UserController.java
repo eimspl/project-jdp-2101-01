@@ -43,12 +43,4 @@ public class UserController {
        List<User> users = userDatabase.showAllUsers();
        return userMapper.mapToUserDtoList(users);
     }
-
-//    @RequestMapping(method = RequestMethod.GET, value = "getKey")
-//    public Integer getKey(@RequestParam Long userId) {
-//        Random random = new Random();
-//        int a = random.nextInt(101);
-//        return a+999;
-//    }
-
 }
