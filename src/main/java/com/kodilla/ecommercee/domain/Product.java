@@ -15,6 +15,15 @@ import java.util.Set;
 @Table(name = "products")
 public class Product {
 
+    public Product(String name, String description, Double price, String unit, Group groups, Set<Product> products) {
+        this.name=name;
+        this.description=description;
+        this.price=price;
+        this.unit=unit;
+        this.groups=groups;
+        this.products=products;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NonNull
