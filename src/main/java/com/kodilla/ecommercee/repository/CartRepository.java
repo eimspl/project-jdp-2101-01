@@ -18,4 +18,3 @@ public interface CartRepository extends CrudRepository<Cart, Long> {
     Optional <Cart> findCartByOrder(Order order);
     Optional <Cart> findCartByDateOfReservation(Timestamp dateofReservation);
 }
-

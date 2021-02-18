@@ -10,12 +10,12 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "orders")
+@Table(name = "ORDERS")
 public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="order_id")
+    @Column(name="ORDER_ID")
     private Long orderId;
 
     @OneToOne(mappedBy = "order" ,cascade = CascadeType.ALL)
