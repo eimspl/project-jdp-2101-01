@@ -39,5 +39,15 @@ public class Order {
 
     @Column
     private boolean isPaid;
+
+    public Order( String orderStatus, String paymentMethod, Double totalValue, Timestamp paymentDate,
+                  Timestamp realisationDate,  boolean isPaid){
+        this.orderStatus = orderStatus;
+        this.paymentMethod = paymentMethod;
+        this.totalValue = totalValue;
+        this.paymentDate = paymentDate;
+        this.realisationDate = realisationDate;
+        this.isPaid = isPaid;
+    }
 }
 
