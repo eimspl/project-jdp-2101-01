@@ -1,12 +1,9 @@
 package com.kodilla.ecommercee.domain;
 
-
 import lombok.*;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -25,9 +22,7 @@ public class Cart {
 
     @OneToOne
     @MapsId
-    @JoinColumn(name = "order_id")
     private Order order;
-
 
     @ManyToOne
     @JoinColumn(name = "USER")
@@ -45,4 +40,13 @@ public class Cart {
     @ManyToMany
     @JoinTable
     private Set<Cart> listOfProducts;
+
+    public Cart(Order order, User user, Date dateOfReservation, Date termOfEndReservation, Boolean isOrdered, Set<Cart> listOfProducts ){
+        this.order = order;
+        this.user = user;
+        this.dateOfReservation = dateOfReservation;
+        this.termOfEndReservation = termOfEndReservation;
+        this.isOrdered = isOrdered;
+        this.listOfProducts = listOfProducts;
+    }
 }

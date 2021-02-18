@@ -10,12 +10,12 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "orders")
+@Table(name = "ORDERS")
 public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="order_id")
+    @Column(name="ORDER_ID")
     private Long orderId;
 
     @OneToOne(mappedBy = "order" ,cascade = CascadeType.ALL)
@@ -39,5 +39,16 @@ public class Order {
 
     @Column
     private boolean isPaid;
+
+    public Order( String orderStatus, String paymentMethod, Double totalValue, Timestamp paymentDate,
+                  Timestamp realisationDate,  boolean isPaid){
+        this.orderStatus = orderStatus;
+        this.paymentMethod = paymentMethod;
+        this.totalValue = totalValue;
+        this.paymentDate = paymentDate;
+        this.realisationDate = realisationDate;
+        this.isPaid = isPaid;
+    }
 }
+
 
